@@ -1,0 +1,61 @@
+﻿@page
+@model MyWishlist.Pages.EditWish
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+<hr/>
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Wish.Id"/>
+            <div class="form-group">
+                <label asp-for="Wish.Description" class="control-label"></label>
+                <textarea asp-for="Wish.Description" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Wish.Description" class="text-danger"></span>
+            </div>
+            @if (Model.Wish.ImageLink != null)
+            {
+                <img src=@Model.Wish.ImageLink class="card-img-top" alt="Image not found :(" height="250">
+            }
+            <div class="form-group">
+                <label for="WishImage">New image (PNG, GIF, BMP, JPEG, JPG). Existing image will be deleted.</label>
+                <input type="file" accept="image/*" id="WishImage" name="WishImage"/>
+            </div>
+            @if (Model.Wish.ImageLink != null)
+            {
+                <div class="form-group">
+                    <input asp-for="DeleteImage" class="form-check-input" type="checkbox"/>
+                    <label asp-for="DeleteImage" class="control-label">Just delete existing image?</label>
+                </div>
+            }
+            <div class="form-group">
+                <label asp-for="Wish.Link" class="control-label"></label>
+                <input asp-for="Wish.Link" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control"/>
+                <select asp-for="Currency" class="form-control">
+                    <option>USD</option>
+                    <option>RUB</option>
+                    <option>BYN</option>
+                    <option>EUR</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input asp-for="Wish.IsCompleted" class="form-check-input" type="checkbox"/>
+                <label asp-for="Wish.IsCompleted" class="control-label">Completed</label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Edit" class="btn btn-primary"/>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
