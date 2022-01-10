@@ -1,0 +1,2 @@
+web: dotnet MyWishlist/bin/Release/net5.0/MyWishlist.dll --server.urls http://+:$PORT ${CORE_ENVIRONMENT}
+
