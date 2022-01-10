@@ -136,7 +136,6 @@ namespace MyWishlist
             {
                 UserName = "mail@mail.com",
                 Email = "mail@mail.com",
-                EmailConfirmed = true,
             };
 
             var result = userManager.CreateAsync(user, "qwerty").Result;
@@ -145,7 +144,6 @@ namespace MyWishlist
             {
                 UserName = Environment.GetEnvironmentVariable("DEFAULT_USER_NAME"),
                 Email = Environment.GetEnvironmentVariable("DEFAULT_USER_EMAIL"),
-                EmailConfirmed = true,
             };
 
             var result = userManager.CreateAsync
