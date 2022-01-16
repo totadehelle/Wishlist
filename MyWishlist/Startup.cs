@@ -77,8 +77,6 @@ namespace MyWishlist
             UserManager<IdentityUser> userManager,
             RoleManager<IdentityRole> roleManager)
         {
-            context.Database.Migrate();
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -99,6 +97,7 @@ namespace MyWishlist
             app.UseAuthentication();
             app.UseAuthorization();
 
+            context.Database.Migrate();
             SeedDefaultUser(userManager, roleManager);
 
             app.UseEndpoints(endpoints =>
